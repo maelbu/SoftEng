@@ -1,0 +1,9 @@
+In this section we have included how we are approaching our testing. We did not use a tool to do integration testing as we did not know it was a requirement.
+
+We will be testing as we go through our implementation of the code. This will ensure that we are not running into major errors at the conclusion of implementation. 
+At the start of testing, we will work our way down the test case chart. Each test case that has been tested successfully will be marked with a check mark. 
+This is how we will know what test cases still need to be tested. If a test case has been tested, but it isn’t functioning properly, we will not check this test case off as there are still some things that need to be done.
+Lea will be testing the application, making note of the test, and sending it off to Maraya to troubleshoot (if the test case is not successful). Our team didn’t take advantage of any testing software.
+We simply met frequently and kept tabs through a live document.
+
+Note: We have reached a point in our project where we want everything to work as expected, but with time permitting we cannot expect our test cases without a high priority to be fully functional.
