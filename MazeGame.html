@@ -5,69 +5,79 @@
   </head>
 
 <body>
-  <canvas id="canvas" width="200" height="120" style="border: 1px solid #000"></canvas>
+  <canvas id="canvas" width="200" height="120" style="border: 1px solid #000"></canvas>
 
-  <script>
+  <script>
 
-    let c = document.getElementById('canvas');
-    let ctx = c.getContext('2d');
+    let c = document.getElementById('canvas');
+    let ctx = c.getContext('2d');
 
-    let map = [[0,0,0,0,1,1,1,1,1,1],
-               [1,1,1,0,1,0,0,0,0,0],
-               [0,0,0,0,1,0,1,0,1,0],
+    let map = [[0,0,0,0,1,1,1,1,1,1],
+               [1,1,1,0,1,0,0,0,0,0],
+               [0,0,0,0,1,0,1,0,1,0],
                [0,1,1,1,1,0,1,0,1,0],
                [0,0,0,0,1,0,1,0,1,1],
                [1,1,1,0,0,0,1,0,0,0]];
 
-    function drawMap(m)
-    {
-      for(i = 0; i < m.length; i++)
-      {
-        for (j = 0; j < m[i].length; j++)
-        {
-          if (m[i][j] === 1)
-          {
-            ctx.beginPath();
-            ctx.fillStyle = "#000000";
-            ctx.fillRect(j*20,i*20,20,20);
-          }
-        }
-      }
-    }
+    function drawMap(m)
+    {
+      for(i = 0; i < m.length; i++)
+      {
+        for (j = 0; j < m[i].length; j++)
+        {
+          if (m[i][j] === 1)
+          {
+            ctx.beginPath();
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(j*20,i*20,20,20);
+            ctx.fillStyle = "blue";
+            ctx.fillRect(180,100,20,20);
 
-    function drawPlayer(x, y)
-    {
-      ctx.beginPath();
-      ctx.fillStyle = "#FF0000";
-      ctx.fillRect(x,y,20,20);
-    }
+          }
+        }
+      }
+    }
 
-    function move(x, y)
-    {
-      ctx.clearRect(0,0,200,120);
-      drawPlayer(x,y);
-      drawMap(map);
 
-      player.x = player.newX;
-      player.y = player.newY;
-    }
+    function drawPlayer(x, y)
+    {
+      ctx.beginPath();
+      ctx.fillStyle = "#FF0000";
+      ctx.fillRect(x,y,20,20);
+    }
 
-    let player = {x: 0, y: 0, newX: 0, newY: 0}
+   
 
-    window.onkeydown = function(e)
-    {
-      if(e.keyCode === 38) { player.newY = player.y - 20; player.newX = player.x; console.log('up');}
-      if(e.keyCode === 37) { player.newX = player.x - 20; player.newY = player.y; console.log('left');}
-      if(e.keyCode === 40) { player.newY = player.y + 20; player.newX = player.x; console.log('left')}
-      if(e.keyCode === 39) { player.newX = player.x + 20; player.newY = player.y; console.log('right');}
-      move(player.newX, player.newY);
-    }
+    function move(x, y)
+    {
+      ctx.clearRect(0,0,200,120);
+      drawPlayer(x,y);
+      drawMap(map);
 
-    window.onload = function()
-    {
-      drawMap(map);
-      drawPlayer(0,0);
-    }
+
+
+      player.x = player.newX;
+      player.y = player.newY;
+
+    }
+
+    let player = {x: 0, y: 0, newX: 0, newY: 0}
+
+    window.onkeydown = function(e)
+    {
+      if(e.keyCode === 38) { player.newY = player.y - 20; player.newX = player.x; console.log('up');}
+      if(e.keyCode === 37) { player.newX = player.x - 20; player.newY = player.y; console.log('left');}
+      if(e.keyCode === 40) { player.newY = player.y + 20; player.newX = player.x; console.log('left');}
+      if(e.keyCode === 39) { player.newX = player.x + 20; player.newY = player.y; console.log('right');}
+      move(player.newX, player.newY);
+      
+    }
+
+    window.onload = function()
+    {
+      drawMap(map);
+      drawPlayer(0,0);
+    }
 var mins = 3;
 
       //calculate the seconds
@@ -77,7 +87,6 @@ var mins = 3;
       function countdown() {
           setTimeout('Decrement()', 60);
       }
-
       //Decrement function decrement the value.
       function Decrement() {
           if (document.getElementById) {
@@ -89,7 +98,6 @@ var mins = 3;
               if (seconds < 59) {
                   seconds.value = secs;
               }
-
               //Display both minutes and seconds
               //getminutes and getseconds is used to
               //get minutes and seconds
@@ -107,7 +115,7 @@ var mins = 3;
               //if seconds becomes zero,
               //then page alert time up
               if (mins < 0) {
-                  alert('times up!');
+                  alert('times up! You Lost!');
                   minutes.value = 0;
                   seconds.value = 0;
               }
@@ -136,6 +144,7 @@ var mins = 3;
     drawMap(map);
 
     drawPlayer(0,0);
+
   }
 
 </script>
@@ -144,11 +153,11 @@ var mins = 3;
 <div>
       Time Left :
       <input id="minutes" type="text" style="width: 10px;
-           border: none; font-size: 16px;
+           border: none; font-size: 14px;
           font-weight: bold; color: black;"><font size="5"> :
                       </font>
       <input id="seconds" type="text" style="width: 20px;
-                      border: none; font-size: 16px;
+                      border: none; font-size: 14px;
                       font-weight: bold; color: black;">
 
 </body>
